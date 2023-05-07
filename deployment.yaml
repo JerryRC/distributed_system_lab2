@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-token-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kube-token-server
+  template:
+    metadata:
+      labels:
+        app: kube-token-server
+    spec:
+      containers:
+        - name: tokenserver
+          image: tokenization:0.2
+          ports:
+            - containerPort: 8080
